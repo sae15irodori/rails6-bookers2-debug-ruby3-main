@@ -49,10 +49,10 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)#titlemになってた
   end
-  
+
   def ensure_currect_user
     @book = Book.find(params[:id])
-      unless @book == current_user
+      unless @book.user == current_user#@bookの.user(ﾕｰｻﾞｰ情報)がｶﾚﾝﾄﾕｰｻﾞｰじゃなければ
         redirect_to books_path
       end
   end
