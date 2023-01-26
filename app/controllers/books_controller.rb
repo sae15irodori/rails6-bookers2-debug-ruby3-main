@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :ensure_currect_user, only: [:edit, :update, :destroy]
 
   def show
     @book = Book.find(params[:id])
@@ -47,5 +48,12 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :body)#titlemになってた
+  end
+  
+  def ensure_currect_user
+    @book = Book.find(params[:id])
+      unless @book == current_user
+        redirect_to books_path
+      end
   end
 end
