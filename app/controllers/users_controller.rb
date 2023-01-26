@@ -17,10 +17,11 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])#追記
     if @user.update(user_params)
       redirect_to user_path(@user.id), notice: "You have updated user successfully."#パスをusers_path(@user)より変更
     else
-      render "show"
+      render :edit #"show"より変更
     end
   end
 
