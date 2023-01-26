@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   end#追記
   
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
