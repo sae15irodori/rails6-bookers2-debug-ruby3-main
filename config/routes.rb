@@ -4,8 +4,12 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
 
   devise_for :users#最終行より移動
-  resources :books, only: [:index,:show,:edit,:create,:destroy,:update]
+  
+  resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
+    resource :favorites, only: [:create, :destroy]#追加
+  end
   resources :users, only: [:index,:show,:edit,:update]
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #devise_for :usersこれをresources :usersの上へ無限ループの原因となる。
 end#追記
