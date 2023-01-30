@@ -16,12 +16,21 @@
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
-      </tr>
-    <% end %>
-    <% if @book.favorited_by?(current_user) %>
-      <p>
-        <%= link
-      </p>
 
+          <% if book.favorited_by?(current_user) %>
+        <td>
+          <%= link_to book_favorites_path(book), method: :delete do %>
+            ♥<%= book.favorites.count %>いいね
+          <% end %>
+        </td>
+          <% else %>
+        <td>
+          <%= link_to book_favorites_path(book), method: :post do %>
+            ♡<%= book.favorites.count %>いいね
+          <% end %>
+        </td>
+          <% end %><!--if文終了-->
+       </tr>
+    <% end %><!--each doのend-->
   </tbody>
 </table>
