@@ -20,7 +20,22 @@
               <% if @book.user == current_user %>
                 <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
                 <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-              <% end %>
+              <% end %><!--if終了-->
+
+              <!--いいねしたのがｶﾚﾝﾄﾕｰｻﾞｰであれば-->
+              <% if @book.favorited_by?(current_user) %><!--取得した投稿データと関連付けたfavoriteモデルのuser_idカラムにｶﾚﾝﾄﾕｰｻﾞｰのidがあれば-->
+            <td>
+                <%= link_to book_favorites_path(@book), method: :delete do %>
+                  ❤ <%= @book.favorites.count %> いいね
+                <% end %>
+            </td>
+                <% else %>
+            <td>
+                <%= link_to book_favorites_path(@book), method: :post do %>
+                  ♡<%= @book.favorites.count %>いいね
+                <% end %>
+            </td>
+              <% end %><!--if終了-->
         </tr>
       </table>
     </div>
