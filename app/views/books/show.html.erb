@@ -36,23 +36,28 @@
                 <% end %>
             </td>
               <% end %><!--if終了-->
-            
+
             <td>
               コメント件数: <%= @book.book_comments.count %><!--bookはコメント複数保有するからcomments複数形-->
             </td>
         </tr>
         <tr>
             <% @book.book_comments.each do |book_comment| %>
-          <td> 
+          <td>
               <%= image_tag book_comment.user.get_profile_image, size:"100x100" %><br>
               <%= link_to book_comment.user.name, user_path(@user.id) %>
           </td>
           <td>
             <%= book_comment.comment %>
           </td>
+          <td>
+            <% if book_comment.user == current_user %>
+              <%= link_to "destroy", book_book_comment_path(@book,book_comment.id), method: :delete %>
+            <% end %>
+          </td>
             <% end %>
         </tr>
-        
+
         <tr>
           <td>
             <%= form_with model: [@book, @book_comment] do |f| %>
