@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   devise_for :users#最終行より移動
 
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
-    resource :favorites, only: [:create, :destroy]#追加
+    resource :favorites, only: [:create, :destroy]#追加　いいね機能
+      resource :book_commments, only[:create, :destroy]
   end
   resources :users, only: [:index,:show,:edit,:update]
 
