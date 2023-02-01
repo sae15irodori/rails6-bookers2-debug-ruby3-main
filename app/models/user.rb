@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy#belongs_toより変更
   has_many :favorites, dependent: :destroy#追記いいね機能と関連付け
   has_many :book_comments, dependent: :destroy#追記コメント機能と関連付け
+  has_many :relationships, dependent: :destroy
 
   has_one_attached :profile_image
 
