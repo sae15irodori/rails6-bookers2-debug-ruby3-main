@@ -10,4 +10,12 @@ class RelationshipsController < ApplicationController
     current_user.unfollow(@user)
     redirect_to request.referer
   end
+
+  def show
+    @user = User.find(params[:user_id])
+  end
+
+  def index
+    
+  end
 end
