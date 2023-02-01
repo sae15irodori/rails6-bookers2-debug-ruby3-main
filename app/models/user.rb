@@ -31,4 +31,17 @@ class User < ApplicationRecord
   def favorited_by?(user)
     favites.exists?(user_id: user.id)
   end
+  
+  def follow(other_user)
+    self.following << other_user#ある人がフォロー中のﾕｰｻﾞｰ配列に()の人を追加する
+  end
+  
+  def unfollow(other_user)
+    self.following.destroy(other_user)#ある人がフォロー中のﾕｰｻﾞｰ配列から()の人を消す
+  end
+
+  def following?(other_user)
+    self.following.include?(other_user)#ある人がﾌｫﾛｰ済みのﾕｰｻﾞｰと()の人一致する場合trueを返す
+  end
+ 
 end
