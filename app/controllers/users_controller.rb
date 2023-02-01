@@ -24,6 +24,10 @@ class UsersController < ApplicationController
       render :edit #"show"より変更
     end
   end
+  
+  def follows
+    @users = User.find(params[:id]).following
+  end
 
   private
 

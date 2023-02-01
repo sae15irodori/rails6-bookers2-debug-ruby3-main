@@ -11,7 +11,7 @@
 
   <tr>
     <th>follows</th>
-    <th><%= link_to user.following.count, user_relationships_path(user.id) %></th>
+    <th><%= link_to user.following.count, follows_user_path(@users.id) %></th>
   </tr>
   <tr>
     <th>followers</th>
