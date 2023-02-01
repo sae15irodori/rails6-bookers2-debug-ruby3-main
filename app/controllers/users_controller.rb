@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def followings
+    @users = User.find(params[:id]).following
+  end
+
   def update
     @user = User.find(params[:id])#追記
     if @user.update(user_params)
@@ -25,9 +29,7 @@ class UsersController < ApplicationController
     end
   end
   
-  def follows
-    @users = User.find(params[:id]).following
-  end
+ 
 
   private
 
