@@ -21,6 +21,8 @@
           <% else %>
               <td><%= link_to 'フォローする', user_relationships_path(user.id), method: :post %></td><!--パスの引数は、ﾘﾚｰｼｮﾝしたい人を取得したいからuser.id-->
           <% end %>
+        <% else %>
+          <td></td>
         <% end %>
 
 
