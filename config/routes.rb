@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :books, only: [:index,:show,:edit,:create,:destroy,:update] do
     resource :favorites, only: [:create, :destroy]#追加　いいね機能
       resources :book_comments, only: [:create, :destroy]
-        
+        resources :relationships, only: [:create, :destroy]#フォロー機能
   end
   resources :users, only: [:index,:show,:edit,:update]
 
