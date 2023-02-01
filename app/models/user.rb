@@ -7,7 +7,15 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy#belongs_toより変更
   has_many :favorites, dependent: :destroy#追記いいね機能と関連付け
   has_many :book_comments, dependent: :destroy#追記コメント機能と関連付け
-  has_many :relationships, dependent: :destroy
+
+  #ﾌｫﾛｰ機能モデルとの関連付け。User,idと同じ数をRelationshipモデルさんに探してもらう。
+  #follower_idカラム内から、数は探してもらう。そして、結びつけする
+  has_many :active_relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
+
+  #@userと紐づいてるfollowe,followerそれぞれのidを取得して、userのデータを引っ張ることが出来るようになる
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
 
   has_one_attached :profile_image
 
