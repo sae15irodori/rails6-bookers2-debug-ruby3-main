@@ -9,11 +9,12 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]#追加　いいね機能
       resources :book_comments, only: [:create, :destroy]#ｺﾒﾝﾄ機能
   end
+
   resources :users, only: [:index,:show,:edit,:update] do
+    member do
+      get :followings, :followers
+    end
     resource :relationships, only: [:create, :destroy]#フォロー機能
-      member do
-        get :followings, :followers
-  end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

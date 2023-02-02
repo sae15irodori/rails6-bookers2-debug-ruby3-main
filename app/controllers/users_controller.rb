@@ -16,10 +16,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def followings
-    @users = User.find(params[:id]).following
-  end
-
   def update
     @user = User.find(params[:id])#追記
     if @user.update(user_params)
@@ -28,8 +24,15 @@ class UsersController < ApplicationController
       render :edit #"show"より変更
     end
   end
-  
- 
+
+
+    def followings
+      user = User.find(params[:id])#ﾕｰｻﾞｰのデータ取得
+      @users = user.following#上の行で取得したユーザーがフォロー中のﾕｰｻﾞｰ一覧を表示したい
+    end
+end
+
+
 
   private
 
@@ -43,4 +46,3 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-end
