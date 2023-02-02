@@ -1,5 +1,10 @@
 <h1>Follow Users</h1>
 
+<% if @users.count <= 0 %>
+  <p>ユーザーはいません</p>
+
+<% else %>
+
 <table class='table'>
   <thead>
     <tr>
@@ -23,3 +28,4 @@
       <% end %>
   </tbody>
 </table>
+<% end %>
