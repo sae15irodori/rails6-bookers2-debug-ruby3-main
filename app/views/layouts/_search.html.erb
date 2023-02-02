@@ -1,4 +1,4 @@
-<div class="serch_form text-center">
+<div class="serch_form text-center mt-3">
     <%= form_with url: search_path,method: :get, local: true do |f| %>
     <%= f.text_field :content %><!--ﾕｰｻﾞｰがが入力したものがcontentとしてｱｸｼｮﾝに送られる-->
     <%= f.select :model,options_for_select({"User"=>"user","Book"=>"book"})%><!--f.selectプルダウン-->
