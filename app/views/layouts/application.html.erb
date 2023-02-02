@@ -10,11 +10,11 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    
+
     <% if user_signed_in? %>
       <%= render 'layouts/search' %>
     <% end %>
-    
+
       <main>
         <p id="notice"><%= flash[:notice] %></p><!--<p id="notice"><= notice %>より変更-->
         <%= yield %><!--追記ﾋﾞｭｰﾌｧｲﾙを呼び出し-->
