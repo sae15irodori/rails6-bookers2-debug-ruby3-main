@@ -27,8 +27,13 @@ class UsersController < ApplicationController
 
 
     def followings
-      user = User.find(params[:id])#ﾕｰｻﾞｰのデータ取得
-      @users = user.following#上の行で取得したユーザーがフォロー中のﾕｰｻﾞｰ一覧を表示したい
+      user = User.find(params[:id])#見たいｰｻﾞｰのデータ取得
+      @users = user.following#上の行で取得したユーザーがフォロー中の全ユーザーデータ取得
+    end
+    
+    def followers
+      user = User.find(params[:id])#見たいユーザーのデータ取得
+      @users = user.followers#上の行で取得したユーザーのフォロワーの全ユーザー
     end
 end
 
