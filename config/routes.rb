@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
     resource :relationships, only: [:create, :destroy]#フォロー機能
   end
-  
+
   get '/search', to: 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   #devise_for :usersこれをresources :usersの上へ無限ループの原因となる。

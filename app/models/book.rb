@@ -6,7 +6,22 @@ class Book < ApplicationRecord
   validates :title,presence:true
   validates :body,presence:true,length:{maximum:200}
 
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)#関連付けしたfavoriteモデルに存在ある？→user_idカラムにuserと同じid
   end
+
+
+  def self.search_for(content, method)
+    if method == 'perfect'#完全一致
+      Book.where(title: content)#titleカラムからcontentに入力されたﾜｰﾄﾞ取得
+    elsif method == 'forward'#前方一致
+      Book.where('title LIKE ?', content+'%')
+    elsif method == 'backward'#後方一致
+      Book.where('title LIKE ?', '%'+content)
+    else
+      Book.where('title LIKE ?', '%'+content+'%')#部分一致
+    end
+  end
+
 end
