@@ -22,7 +22,7 @@
                 <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
               <% end %><!--if終了-->
 <!--いいねボタン-->
-          <td>
+          <td id="favoritesbtn_buttons_<%= @book.id %>"><!--部分ﾃﾝﾌﾟﾚｰﾄ自体にidをつける-->
             <%= render 'favorites/favoritesbtn', book: @book %></td>
           <td>
             コメント数: <%= @book.book_comments.count %><!--bookはコメント複数保有するからcomments複数形-->
