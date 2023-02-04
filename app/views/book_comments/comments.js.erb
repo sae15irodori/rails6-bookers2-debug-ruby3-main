@@ -1,0 +1,4 @@
+$("#comments_area").html("<%= j(render 'book_comments/comments', {book:@book, user:@user} %>");
+<!--book,showで定義したidの子要素(部分ﾃﾝﾌﾟﾚ)のHTMLを、js形式のファイルへ変更。-->
+<!--ｊとつけたことによって､HTML形式だったものがjs形式のものに変わった-->
+$("textarea").val('');

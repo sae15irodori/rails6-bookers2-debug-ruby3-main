@@ -22,7 +22,7 @@
                 <td><%= link_to 'Destroy', book_path(@book.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
               <% end %><!--if終了-->
 <!--いいねボタン-->
-          <td id="favoritesbtn_buttons_<%= @book.id %>"><!--部分ﾃﾝﾌﾟﾚｰﾄ自体にidをつける-->
+          <td id="favorites_buttons_<%= @book.id %>"><!--部分ﾃﾝﾌﾟﾚｰﾄ自体にidをつける-->
             <%= render 'favorites/favoritesbtn', book: @book %></td>
           <td>
             コメント数: <%= @book.book_comments.count %><!--bookはコメント複数保有するからcomments複数形-->
@@ -31,10 +31,15 @@
       </table>
 
       <!--コメント一覧-->
-      <%= render 'book_comments/index', {book:@book, user:@user} %>
+      <div id="comments_area"><!--親要素-->
+        <%= render 'book_comments/comments', {book:@book, user:@user} %><!--子要素-->
+      </div>
 
       <!--ｺﾒﾝﾄフォーム-->
-      <%= render 'book_comments/form', {book:@book, book_comment:@book_comment} %>
+      <div class="new-comment">
+        <%= render 'book_comments/form', {book:@book, book_comment:@book_comment} %>
+      </div>
+
     </div>
   </div>
 </div>
