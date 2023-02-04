@@ -10,7 +10,10 @@ class BookCommentsController < ApplicationController
   end
 
   def destroy
-   BookComment.find(params[:id]).destroy
+    @book = Book.find(params[:book_id])
+    book_comment=BookComment.find_by(id: params[:id], book_id: params[:book_id])
+    book_comment.destroy
+    @user = current_user
    #redirect_to request.referer　js.erbを探しに行く
   end
 

@@ -18,7 +18,7 @@
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
 <!--いいねボタン-->
-        <td class=<%="favorites_buttons_"+ book.id.to_s %>>
+        <td id=<%="favorites_buttons_"+ book.id.to_s %>><!--favorites_buttons_に投稿データのidを付与する事で-->
             <%= render 'favorites/favoritesbtn', book: book %>
         </td>
         <td>
