@@ -1,9 +1,11 @@
  <% if book.favorited_by?(current_user) %><!--取得した投稿データと関連付けたfavoriteモデルのuser_idカラムにｶﾚﾝﾄﾕｰｻﾞｰのidがあれば-->
     <%= link_to book_favorites_path(book), method: :delete, remote: true, data: {"turbolinks" => false} do %><!--remote:trueによって、HTMLではなく、javascriptのリクエストがfavoritesコントローラに送られる-->
-      ♥<%= book.favorites.count %>
+     <i class="fas fa-heart" aria-hidden="true" style="color: #dc143c;"></i>
+      <%= book.favorites.count %>
     <% end %>
 <% else %>
     <%= link_to book_favorites_path(book.id), method: :post, remote: true,data: {"turbolinks" => false} do %>
-      ♡<%= book.favorites.count %>
+    <i class="fas fa-heart" aria-hidden="true"></i>
+      <%= book.favorites.count %>
     <% end %>
 <% end %><!--if終了-->
