@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     end
     resource :relationships, only: [:create, :destroy]#フォロー機能
   end
+  
+  resources :chats, only: [:show, :create]#DM機能
 
   get '/search', to: 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
