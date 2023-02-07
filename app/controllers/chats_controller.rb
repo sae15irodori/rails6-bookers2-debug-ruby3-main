@@ -22,7 +22,8 @@ class ChatsController < ApplicationController
   def create
     @chat = current_user.chats.new(chat_params)#ｶﾚﾝﾄﾕｰｻﾞｰの空の会話箱を用意
     @chat.save#会話内容を保存
-    redirect_to request.referer#同じページへリダイレクト
+    #redirect_to request.referer#同じページへリダイレクト
+    #views/chats/create.js.erbを表示
   end
 
   private

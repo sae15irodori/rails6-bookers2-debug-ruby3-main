@@ -1,7 +1,7 @@
-<h1 class= 'ml-5'><%= @user.name %>さんとのチャット</h1>
+<h1 id= "message ml-5"><%= @user.name %>さんとのチャット</h1>
 
 
-  <div class="message ml-5" style="width: 400px;">
+  <div class="chat ml-5" style="width: 400px;">
     <% @chats.each do |chat| %>
       <% if chat.user_id == current_user.id %><!--チャットの内容がカレントユーザー投稿したものなら-->
         <p style="text-align: right;"><%= chat.message %></p><!--右側にメッセージを表示-->
@@ -11,7 +11,7 @@
     <% end %>
   </div>
   
-<%= form_with model: @chat do |f| %>
+<%= form_with model: @chat, data: {remote: true},date:{"turbolinks"=>false} do |f| %>
   <%= f.text_field :message, class:"ml-5" %>
   <%= f.hidden_field :room_id %>
 <% end %>
