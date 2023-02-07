@@ -1,0 +1,12 @@
+<h1 class= 'ml-5'><%= @user.name %>さんとのチャット</h1>
+
+      <%= form_with model: @chat do |f| %>
+      <div><%= f.text_field :message %></div>
+      <%= f.hidden_field :room_id %>
+      <% end %>
+    
+    <div class='container'>
+      <% @chats.each do |chat| %>
+        <div class='row'><%= chat.message %></div>
+      <% end %>
+    </div>
