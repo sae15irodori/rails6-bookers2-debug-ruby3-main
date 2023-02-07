@@ -27,6 +27,9 @@
           <td>
             コメント数: <%= @book.book_comments.count %><!--bookはコメント複数保有するからcomments複数形-->
           </td>
+          <td>
+            <p class="view-count"><%= @book_detail.view_counts.count %>ビュー</p>
+          </td>
         </tr>
       </table>
 

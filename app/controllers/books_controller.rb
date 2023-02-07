@@ -6,14 +6,19 @@ class BooksController < ApplicationController
     @book_n = Book.new#部分ﾃﾝﾌﾟﾚｰﾄへ
     @user = @book.user#追記＃部分テンプレートへ
     @book_comment = BookComment.new
+    @book_detail = Book.find(params[:id])#見てる投稿のデータを取得
+      #初めて見る投稿ならば
+      unless ViewCount.find_by(user_id: current_user.id, book_id: @book_detail.id)#viewcountレコードがｶﾚﾝﾄﾕｰｻﾞｰで、見てる投稿データと同じじゃなければ。
+        current_user.view_counts.create(book_id: @book_detail.id)#viwecountsレコードに情報追加
+      end
   end
 
   def index
     #@books = Book.all
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
-    @books = Book.all.sort {|a,b| 
-      a.favorites.where(created_at: from...to).size <=> 
+    @books = Book.all.sort {|a,b|
+      a.favorites.where(created_at: from...to).size <=>
       b.favorites.where(created_at: from...to).size
     }.reverse
     @book  = Book.new

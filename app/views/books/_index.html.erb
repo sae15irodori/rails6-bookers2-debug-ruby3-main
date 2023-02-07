@@ -24,6 +24,9 @@
         <td>
           コメント数:<%= book.book_comments.count %>
         </td>
+        <td>
+          <p class="view-count"><%= book.view_counts.count %>ビュー</p>
+        </td>
        </tr>
     <% end %><!--each doのend-->
   </tbody>
