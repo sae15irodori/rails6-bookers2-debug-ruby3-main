@@ -1,12 +1,17 @@
 <h1 class= 'ml-5'><%= @user.name %>さんとのチャット</h1>
 
-      <%= form_with model: @chat do |f| %>
-      <div><%= f.text_field :message %></div>
-      <%= f.hidden_field :room_id %>
+
+  <div class="message ml-5" style="width: 400px;">
+    <% @chats.each do |chat| %>
+      <% if chat.user_id == current_user.id %><!--チャットの内容がカレントユーザー投稿したものなら-->
+        <p style="text-align: right;"><%= chat.message %></p><!--右側にメッセージを表示-->
+      <% else %><!--ﾛｸﾞｲﾝﾕｰｻﾞｰが投稿したものじゃなければｰ-->
+        <p style="text-align: left;"><%= chat.message %></p><!--左側に表示-->
       <% end %>
-    
-    <div class='container'>
-      <% @chats.each do |chat| %>
-        <div class='row'><%= chat.message %></div>
-      <% end %>
-    </div>
+    <% end %>
+  </div>
+  
+<%= form_with model: @chat do |f| %>
+  <%= f.text_field :message, class:"ml-5" %>
+  <%= f.hidden_field :room_id %>
+<% end %>
