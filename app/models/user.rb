@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :chats
   has_many :rooms, through: :user_rooms
 
+  #閲覧数の表示
+  has_many :view_counts, dependent: :destroy
+
   has_one_attached :profile_image
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
