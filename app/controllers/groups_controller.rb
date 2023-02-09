@@ -40,17 +40,17 @@ class GroupsController < ApplicationController
       render "edit"
     end
   end
-  
+
   def destroy
     @group = Group.find(params[:id])
     @group.users.delete(current_user)#ｶﾚﾝﾄﾕｰｻﾞｰをｸﾞﾙｰﾌﾟから消す。ﾕｰｻﾞｰとの紐づけを消すために.usersついている
     redirect_to groups_path
   end
-  
+
   def join
-    @group = Group.find(params)
+    @group = Group.find(params[:group_id])
     @group.users << current_user
-    redirect_to groups_path
+    redirect_to group_path(@group.id)
   end
 
   private
