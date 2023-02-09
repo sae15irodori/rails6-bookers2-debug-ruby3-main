@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   end
 
   resources :chats, only: [:show, :create]#DM機能
-  resources :groups, except: [:destroy]#グループ作成機能
+  resources :groups do
+    get "join" => "groups#join"
+  end
 
   get '/search', to: 'searches#search'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
