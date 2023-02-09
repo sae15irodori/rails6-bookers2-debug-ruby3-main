@@ -23,11 +23,6 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
-  def show
-    @book = Book.new
-    @group = Group.find(params[:id])
-  end
-
   def edit
   end
 
@@ -47,8 +42,5 @@ class GroupsController < ApplicationController
 
   def ensure_correct_user
     @group = Group.find(params[:id])
-    unless @group.owner_id == current_user.id
-      redirect_to groups_path
-    end
   end
 end
