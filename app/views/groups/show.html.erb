@@ -29,7 +29,7 @@
             <td><%= @group.name %></td>
             <td><%= @group.introduction %></td>
             <td>
-              <% @group.group_users.each do |member| %>
+              <% @group.users.each do |member| %>
                 <%= member.name %><br>
               <% end %>
             </td>
