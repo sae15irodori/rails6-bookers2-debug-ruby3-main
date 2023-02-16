@@ -59,7 +59,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)#titlemになってた
+    params.require(:book).permit(:title, :body, :file)#titlemになってた
   end
 
   def ensure_currect_user
