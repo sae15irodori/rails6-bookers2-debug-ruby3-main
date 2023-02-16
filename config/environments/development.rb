@@ -76,4 +76,18 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   #↓追記
   config.hosts << "f52fbbda0a8241f4a0eaf93dd3cef9b9.vfs.cloud9.ap-northeast-1.amazonaws.com"
+
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['KEY'],
+    :password => ENV['SECRET_KEY'],
+    :domain => "gmail.com",
+    :address => "smtp.gmail.com",
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+
 end

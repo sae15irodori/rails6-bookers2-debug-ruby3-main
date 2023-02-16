@@ -19,4 +19,9 @@ module Bookers2
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
   end
+  
+  class ApplicationMailer < ActionMailer::Base
+  default from: '管理人だよ<from@gmail.com>'
+  layout 'mailer'
+  end
 end
