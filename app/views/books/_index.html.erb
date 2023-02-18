@@ -17,6 +17,9 @@
         </td>
         <td><%= link_to book.title,book %></td>
         <td><%= book.body %></td>
+        <audio src= "<%= "#{book.file}" %>" controls="">
+         <a src="<%= "#{book.file}" %>">ダウンロード</a>
+       </audio>
 <!--いいねボタン-->
         <td id=<%="favorites_buttons_"+ book.id.to_s %>><!--favorites_buttons_に投稿データのidを付与する事で-->
             <%= render 'favorites/favoritesbtn', book: book %>
