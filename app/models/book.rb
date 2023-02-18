@@ -4,6 +4,8 @@ class Book < ApplicationRecord
   has_many :book_comments, dependent: :destroy#追記　コメント機能と関連付け
   has_many :favorited_users, through: :favorites, source: :user
   has_many :view_counts, dependent: :destroy
+  has_many :book_tag_relations, dependent: :destroy
+  has_many :tags, through: :book_tag_relations, dependent: :destroy
 
   mount_uploader :file, AudiofileUploader
 
